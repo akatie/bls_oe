@@ -59,8 +59,8 @@ ph <- nerds %>% inner_join(mystates %>% select(state_code,
     lower = annual_wage_qtile_25, ymax = annual_wage_qtile_90, 
     ymin = annual_wage_qtile_10, color = state_name)) + 
     geom_boxplot(stat = "identity") + scale_y_log10() + 
-    theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
-    labs(y = "annual wages, by area", title = "BLS OE wage data")
+    coord_flip() + labs(x = "area", y = "annual wages, by area", 
+    title = "BLS OE wage data")
 print(ph)
 ```
 
@@ -82,7 +82,7 @@ ph <- emply %>% inner_join(mystates %>% select(state_code,
     Employment)) %>% mutate(state_name = forcats::fct_reorder(factor(state_name), 
     Employment)) %>% ggplot(aes(area_x, Employment, 
     color = state_name)) + geom_point() + scale_y_log10() + 
-    coord_flip() + labs(y = "Employment, by area", 
+    coord_flip() + labs(x = "area", y = "Employment, by area", 
     title = "BLS OE wage data")
 print(ph)
 ```

@@ -85,8 +85,9 @@ ph <- nerds %>%
 						 color=state_name)) + 
 	geom_boxplot(stat='identity') + 
 	scale_y_log10() + 
-	theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-	labs(y='annual wages, by area',
+	coord_flip() +
+	labs(x='area',
+			 y='annual wages, by area',
 			 title='BLS OE wage data')
 print(ph)
 	
@@ -109,7 +110,8 @@ ph <- emply %>%
 	geom_point() + 
 	scale_y_log10() + 
 	coord_flip() +
-	labs(y='Employment, by area',
+	labs(x='area',
+			 y='Employment, by area',
 			 title='BLS OE wage data')
 print(ph)
 
