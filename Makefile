@@ -2,6 +2,7 @@
 # this really ought to be in a sqlite file...
 
 UPSTREAM_D 			= download.bls.gov/pub/time.series/oe
+SQLITE_F 				= bls.sqlite
 
 BLS_NAMES 			 = oe.area oe.areatype oe.contacts oe.data.0.Current oe.datatype oe.footnote oe.industry
 BLS_NAMES 			+= oe.occupation oe.release oe.seasonal oe.sector 
@@ -10,21 +11,26 @@ BLS_FILES 			 = $(foreach name,$(BLS_NAMES),$(UPSTREAM_D)/$(name))
 
 .PHONY : bls_files
 
+$(UPSTREAM_D) : 
+	mkdir -p $@
 
 bls_files : $(BLS_FILES)   ## download all the BLS files
 
 $(UPSTREAM_D)/index.html : 
 	wget -r -l 1 https://$(UPSTREAM_D)/
 
-$(UPSTREAM_D)/% :
+$(UPSTREAM_D)/% : | $(UPSTREAM_D)
 	wget -O $@ https://download.bls.gov/pub/time.series/oe/$*
 
-bls.sqlite : stuffit.R | $(BLS_FILES)
-	r $< -D $(UPSTREAM_D) -O $@
+$(SQLITE_F) : stuffit.R $(BLS_FILES) 
+	r $(filter %.R,$^) -D $(UPSTREAM_D) -O $@
 
 .PHONY : sqlite
 
-sqlite : bls.sqlite  ## stuff into a sqlite file
+sqlite : $(SQLITE_F)  ## stuff into a sqlite file
+
+README.md : %.md : %.Rmd $(SQLITE_F)
+	r -l knitr -e 'setwd(".");if (require(knitr)) { knit("$(<F)") }'
 
 ############## DEFAULT ##############
 
