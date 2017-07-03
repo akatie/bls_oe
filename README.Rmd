@@ -36,7 +36,7 @@ library(ggplot2)
 Here we load BLS OE (employment and wage) data into a sqlite database. The
 Makefile simplifies processing
 
-```{bash buildit,cache=FALSE,eval=TRUE,echo=TRUE,results='asis'}
+```{bash buildit,cache=FALSE,eval=TRUE,echo=TRUE}
 make help
 make -n sqlite
 ```

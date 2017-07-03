@@ -11,16 +11,17 @@ make help
 make -n sqlite
 ```
 
-
-make[1]: Entering directory '/home/spav/github/bls_oe'
-[36mbls_files                     [0m download all the BLS files
-[36mhelp                          [0m generate this help message
-[36mreadme                        [0m make the README.md file
-[36msqlite                        [0m stuff into a sqlite file
-make[1]: Leaving directory '/home/spav/github/bls_oe'
-make[1]: Entering directory '/home/spav/github/bls_oe'
-make[1]: Nothing to be done for 'sqlite'.
-make[1]: Leaving directory '/home/spav/github/bls_oe'
+```
+## make[1]: Entering directory '/home/spav/github/bls_oe'
+## [36mbls_files                     [0m download all the BLS files
+## [36mhelp                          [0m generate this help message
+## [36mreadme                        [0m make the README.md file
+## [36msqlite                        [0m stuff into a sqlite file
+## make[1]: Leaving directory '/home/spav/github/bls_oe'
+## make[1]: Entering directory '/home/spav/github/bls_oe'
+## make[1]: Nothing to be done for 'sqlite'.
+## make[1]: Leaving directory '/home/spav/github/bls_oe'
+```
 
 ## Some data
 
