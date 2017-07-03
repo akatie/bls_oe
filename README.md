@@ -2,7 +2,29 @@
 
 # BLS OE data
 
-Here we load BLS OE (employment and wage) data into a sqlite database.
+Here we load BLS OE (employment and wage) data into a sqlite database. The
+Makefile simplifies processing
+
+
+```bash
+make help
+make -n sqlite
+```
+
+
+make[1]: Entering directory '/home/spav/github/bls_oe'
+[36mbls_files                     [0m download all the BLS files
+[36mhelp                          [0m generate this help message
+[36mreadme                        [0m make the README.md file
+[36msqlite                        [0m stuff into a sqlite file
+make[1]: Leaving directory '/home/spav/github/bls_oe'
+make[1]: Entering directory '/home/spav/github/bls_oe'
+make[1]: Nothing to be done for 'sqlite'.
+make[1]: Leaving directory '/home/spav/github/bls_oe'
+
+## Some data
+
+Look. data.
 
 
 ```r
@@ -41,7 +63,7 @@ ph <- nerds %>% inner_join(mystates %>% select(state_code,
 print(ph)
 ```
 
-<img src="figure/checkit-1.png" title="plot of chunk checkit" alt="plot of chunk checkit" width="700px" height="600px" />
+<img src="figure/plotit-1.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1000px" height="800px" />
 
 ```r
 emply <- tbl(con, "occupation") %>% filter(occupation_name %like% 
@@ -65,7 +87,7 @@ ph <- emply %>% inner_join(mystates %>% select(state_code,
 print(ph)
 ```
 
-<img src="figure/checkit-2.png" title="plot of chunk checkit" alt="plot of chunk checkit" width="700px" height="600px" />
+<img src="figure/plotit-2.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1000px" height="800px" />
 
 ```r
 both <- emply %>% inner_join(nerds)
@@ -84,5 +106,5 @@ ph <- both %>% inner_join(mystates %>% select(state_code,
 print(ph)
 ```
 
-<img src="figure/checkit-3.png" title="plot of chunk checkit" alt="plot of chunk checkit" width="700px" height="600px" />
+<img src="figure/plotit-3.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1000px" height="800px" />
 

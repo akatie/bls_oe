@@ -29,6 +29,10 @@ $(SQLITE_F) : stuffit.R $(BLS_FILES)
 
 sqlite : $(SQLITE_F)  ## stuff into a sqlite file
 
+.PHONY : readme
+
+readme : README.md  ## make the README.md file
+
 README.md : %.md : %.Rmd $(SQLITE_F)
 	r -l knitr -e 'setwd(".");if (require(knitr)) { knit("$(<F)") }'
 
