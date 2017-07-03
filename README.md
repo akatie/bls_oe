@@ -63,7 +63,7 @@ ph <- nerds %>% inner_join(mystates %>% select(state_code,
 print(ph)
 ```
 
-<img src="figure/plotit-1.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1000px" height="800px" />
+<img src="figure/plotit-1.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1200px" height="800px" />
 
 ```r
 emply <- tbl(con, "occupation") %>% filter(occupation_name %like% 
@@ -81,13 +81,12 @@ ph <- emply %>% inner_join(mystates %>% select(state_code,
     Employment)) %>% mutate(state_name = forcats::fct_reorder(factor(state_name), 
     Employment)) %>% ggplot(aes(area_x, Employment, 
     color = state_name)) + geom_point() + scale_y_log10() + 
-    theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
     coord_flip() + labs(y = "Employment, by area", 
     title = "BLS OE wage data")
 print(ph)
 ```
 
-<img src="figure/plotit-2.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1000px" height="800px" />
+<img src="figure/plotit-2.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1200px" height="800px" />
 
 ```r
 both <- emply %>% inner_join(nerds)
@@ -106,5 +105,5 @@ ph <- both %>% inner_join(mystates %>% select(state_code,
 print(ph)
 ```
 
-<img src="figure/plotit-3.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1000px" height="800px" />
+<img src="figure/plotit-3.png" title="plot of chunk plotit" alt="plot of chunk plotit" width="1200px" height="800px" />
 

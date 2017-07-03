@@ -11,7 +11,7 @@ opts_chunk$set(cache=TRUE,cache.path="cache/")
 
 #opts_chunk$set(fig.path="figure/",dev=c("pdf","cairo_ps"))
 opts_chunk$set(fig.path="figure/",dev=c("png"))
-opts_chunk$set(fig.width=10,fig.height=8,dpi=200,out.width='1000px',out.height='800px')
+opts_chunk$set(fig.width=10,fig.height=8,dpi=300,out.width='1200px',out.height='800px')
 
 # doing this means that png files are made of figures;
 # the savings is small, and it looks like shit:
@@ -108,7 +108,6 @@ ph <- emply %>%
 	ggplot(aes(area_x,Employment,color=state_name)) + 
 	geom_point() + 
 	scale_y_log10() + 
-	theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
 	coord_flip() +
 	labs(y='Employment, by area',
 			 title='BLS OE wage data')
