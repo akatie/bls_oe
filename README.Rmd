@@ -25,7 +25,7 @@ opts_chunk$set(fig.width=10,fig.height=8,dpi=300,out.width='1200px',out.height='
 # for text wrapping:
 options(width=124,digits=2)
 opts_chunk$set(size="small")
-opts_chunk$set(tidy=TRUE,tidy.opts=list(width.cutoff=50,keep.blank.line=TRUE))
+opts_chunk$set(tidy=FALSE,tidy.opts=list(width.cutoff=50,keep.blank.line=TRUE))
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -36,9 +36,11 @@ library(ggplot2)
 Here we load BLS OE (employment and wage) data into a sqlite database. The
 Makefile simplifies processing
 
-```{bash buildit,cache=FALSE,eval=TRUE,echo=TRUE}
+```{bash helpit,cache=FALSE,eval=TRUE,echo=TRUE}
 make help
-make -n sqlite
+```
+```{bash buildit,cache=FALSE,eval=TRUE,echo=TRUE}
+make -B -n sqlite
 ```
 
 ## Some data
@@ -137,4 +139,19 @@ ph <- both %>%
 			 title='BLS OE wage data')
 print(ph)
 ```
+
+# Legal Mumbo Jumbo
+
+The `bls_oe` processing code is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+`bls_oe` is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with fromo.  If not, see <http://www.gnu.org/licenses/>.
 
